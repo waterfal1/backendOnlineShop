@@ -1,1 +1,1 @@
-web: tsc && node main.js
+web: yarn install && node dist/main.js
