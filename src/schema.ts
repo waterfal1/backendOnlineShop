@@ -47,9 +47,19 @@ const typeDefs = gql`
     id: String!
   }
 
+  type IsValidCategory {
+    isValidCategory: Boolean
+  }
+
+  type IsValidProductId {
+    isValidProductId: Boolean
+  }
+
   type Query {
     category(input: CategoryInput): Category
     currencies: [String]
+    isValidCategory(input: CategoryInput): IsValidCategory
+    isValidProductId(input: ProductInput): IsValidProductId
     product(input: ProductInput): SingleProduct
   }
 `;
