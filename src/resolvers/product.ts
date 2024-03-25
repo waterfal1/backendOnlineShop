@@ -9,19 +9,14 @@ type Args = {
 const productResolver = (_parent: any, args: Args) => {
   const { input: { id } = {} } = args;
 
-  const result = id
-    ? products
-        // .filter((product) => product.getCategory() === title)
-        .find((p) => p.getId() === id)
-    : null;
+  const result = id ? products.find((p) => p.getId() === id) : null;
 
   if (!result) {
     return null;
   }
 
-  return {
-    product: result,
-  };
+  return result;
+
 };
 
 export default productResolver;

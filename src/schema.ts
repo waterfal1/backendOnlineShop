@@ -39,10 +39,6 @@ const typeDefs = gql`
     title: String!
   }
 
-  type SingleProduct {
-    product: Product
-  }
-
   input ProductInput {
     id: String!
   }
@@ -60,7 +56,7 @@ const typeDefs = gql`
     currencies: [String]
     isValidCategory(input: CategoryInput): IsValidCategory
     isValidProductId(input: ProductInput): IsValidProductId
-    product(input: ProductInput): SingleProduct
+    product(input: ProductInput): Product
   }
 `;
 
