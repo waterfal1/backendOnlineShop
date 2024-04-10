@@ -11,8 +11,6 @@ const server = new ApolloServer({
 dotenv.config();
 
 
-server
-  .listen(process.env.PORT, "web-production-d253.up.railway.app")
-  .then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
-  });
+server.listen("web-production-d253.up.railway.app").then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});
