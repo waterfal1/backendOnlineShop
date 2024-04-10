@@ -1,5 +1,7 @@
-import converter from '../util/currency-converter';
+import converter from "../util/currency-converter";
 
-const currencyResolver = () => converter.availableCurrencies;
+const currencyResolver = () => {
+  return converter.availableCurrencies;
+};
 
 export default currencyResolver;
