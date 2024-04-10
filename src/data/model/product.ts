@@ -1,90 +1,93 @@
 import { Category } from "../type";
-import converter from '../../util/currency-converter';
+import converter from "../../util/currency-converter";
 import Price from "./price";
 import AttributeSet from "./attribute-set";
 
-const roundToTwoDecimals = (num: number) => Number((Math.round(num * 100) / 100).toFixed(2));
+const roundToTwoDecimals = (num: number) =>
+  Number((Math.round(num * 100) / 100).toFixed(2));
 
 class Product {
-    protected prices: Price[] = [];
-    protected category: Category;
-    protected description: string;
-    protected gallery: string[] = [];
-    protected attributes: AttributeSet[] = [];
-    protected inStock: boolean = true;
-    protected brand: string;
-    protected id: string;
+  protected prices: Price[] = [];
+  protected category: Category;
+  protected description: string;
+  protected gallery: string[] = [];
+  protected attributes: AttributeSet[] = [];
+  protected inStock: boolean = true;
+  protected brand: string;
+  protected id: string;
 
-    constructor(
-        protected name: string
-    ) {}
+  constructor(protected name: string) {}
 
-    protected addPrice(price: Price) {
-        this.prices.push(price);
+  protected addPrice(price: Price) {
+    this.prices.push(price);
 
-        return this;
-    }
+    return this;
+  }
 
-    getCategory = () => this.category;
+  getCategory = () => this.category;
 
-    setPrice(amountEUR: number) {
-        converter.availableCurrencies.forEach((currencyCode) => {
-            this.addPrice(new Price(
-                currencyCode, 
-                roundToTwoDecimals(converter.convertFromEUR(amountEUR, currencyCode))
-            ))
-        });
+  getId = () => this.id;
 
-        return this;
-    }
+  setPrice(amountEUR: number) {
+    converter.availableCurrencies.forEach((currencyCode) => {
+      this.addPrice(
+        new Price(
+          currencyCode,
+          roundToTwoDecimals(converter.convertFromEUR(amountEUR, currencyCode))
+        )
+      );
+    });
 
-    setId(id: string) {
-        this.id = id;
+    return this;
+  }
 
-        return this;
-    }
+  setId(id: string) {
+    this.id = id;
 
-    setCategory(category: Category) {
-        this.category = category;
+    return this;
+  }
 
-        return this;
-    }
+  setCategory(category: Category) {
+    this.category = category;
 
-    setDescription(description: string) {
-        this.description = description;
+    return this;
+  }
 
-        return this;
-    }
+  setDescription(description: string) {
+    this.description = description;
 
-    setInStock(is: boolean) {
-        this.inStock = is;
+    return this;
+  }
 
-        return this;
-    }
+  setInStock(is: boolean) {
+    this.inStock = is;
 
-    setBrand(brand: string) {
-        this.brand = brand;
+    return this;
+  }
 
-        return this;
-    }
+  setBrand(brand: string) {
+    this.brand = brand;
 
-    addAttributeSet(attributeSet: AttributeSet) {
-        this.attributes.push(attributeSet);
+    return this;
+  }
 
-        return this;
-    }
+  addAttributeSet(attributeSet: AttributeSet) {
+    this.attributes.push(attributeSet);
 
-    addImage(url: string) {
-        this.gallery.push(url);
+    return this;
+  }
 
-        return this;
-    }
+  addImage(url: string) {
+    this.gallery.push(url);
 
-    addImages(urls: string[]) {
-        this.gallery.push(...urls);
+    return this;
+  }
 
-        return this;
-    }
+  addImages(urls: string[]) {
+    this.gallery.push(...urls);
+
+    return this;
+  }
 }
 
 export default Product;
