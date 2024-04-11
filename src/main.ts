@@ -1,7 +1,8 @@
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "apollo-server-express";
 import * as dotenv from "dotenv";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
+import express from "express";
 
 const server = new ApolloServer({
   typeDefs: typeDefs,
@@ -10,6 +11,22 @@ const server = new ApolloServer({
 
 dotenv.config();
 
-server.listen(process.env.PORT, "0.0.0.0").then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+async function startApolloServer() {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
+
+  await server.start();
+
+  const app = express();
+  server.applyMiddleware({ app });
+
+  const port = process.env.PORT || 4000;
+  await new Promise((resolve) => app.listen({ port }, resolve));
+  console.log(
+    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
+  );
+}
+
+startApolloServer();
