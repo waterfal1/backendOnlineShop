@@ -4,11 +4,6 @@ import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import express from "express";
 
-const server = new ApolloServer({
-  typeDefs: typeDefs,
-  resolvers: resolvers,
-});
-
 dotenv.config();
 
 async function startApolloServer() {
