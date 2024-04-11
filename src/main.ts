@@ -16,5 +16,7 @@ dotenv.config();
 server.applyMiddleware({ app });
 
 app.listen(process.env.PORT, () => {
-  console.log(`🚀  Server ready at `);
+  console.log(
+    `🚀  Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`
+  );
 });
