@@ -8,6 +8,9 @@
     "start": "nodemon dist/main.js",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/main.js\""
   },
+  "engines": {
+    "yarn": "1.22.19"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
