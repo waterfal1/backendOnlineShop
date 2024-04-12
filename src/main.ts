@@ -6,6 +6,8 @@ import express from "express";
 
 dotenv.config();
 
+const app = express();
+
 async function startApolloServer() {
   const server = new ApolloServer({
     typeDefs,
@@ -15,7 +17,6 @@ async function startApolloServer() {
 
   await server.start();
 
-  const app = express();
   server.applyMiddleware({ app });
 
   const port = process.env.PORT || 4000;
@@ -26,3 +27,5 @@ async function startApolloServer() {
 }
 
 startApolloServer();
+
+export default app;
