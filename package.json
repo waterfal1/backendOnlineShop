@@ -7,7 +7,7 @@
     "build": "tsc",
     "vercel-build": "echo Hello",
     "start": "yarn build && nodemon dist/main.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/main.js\""
+    "dev": "concurrently \"tsc -w\" \"nodemon src/main.ts\""
   },
   "keywords": [],
   "author": "",
