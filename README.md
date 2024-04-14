@@ -1,4 +1,4 @@
-# My Project
+# GraphQL API
 This is the very basic prototype of GraphQL API for an online shop.
 ## Overview
 API was implemented primarily as a practical exercise, aimed at refining skills and understanding of working of GrapQL.
