@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "vercel-build": "echo Hello",
-    "start": "yarn build && nodemon dist/main.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/main.js\""
+    "start": "yarn build && nodemon dist/src/main.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/src/main.js\""
   },
   "keywords": [],
   "author": "",
